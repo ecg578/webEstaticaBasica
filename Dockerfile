@@ -1,9 +1,13 @@
-FROM httpd:2.4
-COPY ./public-html/ /usr/local/apache2/htdocs/
+FROM httpd
 
 ADD index.html /var/www/html
-ADD index.html /usr/local/apache2/htdocs/
+
+COPY index.html /usr/local/apache2/htdocs/
+
+VOLUME /usr/local/apache2/htdocs/
 
 EXPOSE 80
 
-VOLUME ["/var/www/html", "/usr/local/apache2/htdocs/"]
+LABEL version="v0"
+
+LABEL maintainer="<ecg578>"
